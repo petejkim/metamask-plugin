@@ -48,7 +48,7 @@
     "babel-runtime": "^6.23.0",
     "bip39": "^2.2.0",
     "bluebird": "^3.5.0",
-    "browser-passworder": "^2.0.3",
+    "browser-passworder": "petejkim/browser-passworder#ff7e6ae8a5deb4e4a59e7298edb1a04a30a33f7f",
     "browserify-derequire": "^0.9.4",
     "client-sw-ready-event": "^3.0.3",
     "clone": "^1.0.2",
