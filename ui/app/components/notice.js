@@ -15,8 +15,6 @@ function Notice () {
 Notice.prototype.render = function () {
   const { notice, onConfirm } = this.props
   const { title, date, body } = notice
-  const state = this.state || { disclaimerDisabled: true }
-  const disabled = state.disclaimerDisabled
 
   return (
     h('.flex-column.flex-center.flex-grow', [
@@ -76,12 +74,6 @@ Notice.prototype.render = function () {
       `),
 
       h('div.markdown', {
-        onScroll: (e) => {
-          var object = e.currentTarget
-          if (object.offsetHeight + object.scrollTop + 100 >= object.scrollHeight) {
-            this.setState({disclaimerDisabled: false})
-          }
-        },
         style: {
           background: 'rgb(235, 235, 235)',
           height: '310px',
@@ -99,9 +91,7 @@ Notice.prototype.render = function () {
       ]),
 
       h('button', {
-        disabled,
         onClick: () => {
-          this.setState({disclaimerDisabled: true})
           onConfirm()
         },
         style: {
@@ -115,9 +105,6 @@ Notice.prototype.render = function () {
 Notice.prototype.componentDidMount = function () {
   var node = findDOMNode(this)
   linker.setupListener(node)
-  if (document.getElementsByClassName('notice-box')[0].clientHeight < 310) {
-    this.setState({disclaimerDisabled: false})
-  }
 }
 
 Notice.prototype.componentWillUnmount = function () {
